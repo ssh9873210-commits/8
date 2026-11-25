@@ -419,7 +419,7 @@ const BOSST = [
 
 const midEase = w => w > 26 && w < 50 ? 1 - .15 * Math.sin(Math.PI * (w - 26) / 24) : 1;   // 30~45웨이브 구간 체력 최대 15% 완화
 const lateHard = w => w > 55 ? 1 + .8 * Math.min(1, (w - 55) / 25) : 1;   // 55웨이브 이후 점점 단단해짐
-const hpOf = w => Math.round(1.7 * (18 + 6 * w + 1.6 * w * w + .13 * w * w * w) * midEase(w) * lateHard(w) * (w >= 30 ? .9 : 1));
+const hpOf = w => Math.round(1.7 * (18 + 6 * w + 1.6 * w * w + .13 * w * w * w) * midEase(w) * lateHard(w) * (w >= 30 ? .9 : 1) * (w <= 80 ? .95 : 1));
 const speedOf = w => 1 + Math.min(.5, w * .006);
 const ATK_STEP = .02, ATK_MAX = 50;
 const atkCost = lv => 1 + Math.floor(lv / 10);          // 1~10단계 1스타, 11~20단계 2스타 …
